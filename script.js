@@ -2,6 +2,6 @@ const coolButton = document.getElementById("coolbutton");
 
 coolButton.addEventListener("click", coolFunction);
 
-function coolfunction() {
+function coolFunction() {
   console.log("Cool words");
 }
