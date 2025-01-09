@@ -97,4 +97,47 @@ function stopHeckYeahTimer() {
 function updateAverageDisplay() {
   let average = elapsedTimeSegments.reduce((a, b) => a + b) / elapsedTimeSegments.length;
   averageDisplay.textContent = `average heck yeah: ${average.toFixed()}`;
+  if (average >= 0 && average < 10) {
+    averageDisplay.textContent = `average heck yeah: 00:00:00:0${average}`;
+  } else if (average >= 10 && average < 100) {
+    averageDisplay.textContent = `average heck yeah: 00:00:00:${average.toString().slice(-1)}${average
+      .toString()
+      .slice(0, 1)}`;
+  } else if (average >= 100 && average < 1000) {
+    averageDisplay.textContent = `average heck yeah: 00:00:0${average.toString().slice(0, 1)}:${average
+      .toString()
+      .slice(1, 2)}${average.toString().slice(2, 3)}`;
+  } else if (average >= 1000 && average < 10000) {
+    averageDisplay.textContent = `average heck yeah: 00:00:${average.toString().slice(0, 1)}${average
+      .toString()
+      .slice(1, 2)}:${average.toString().slice(2, 3)}${average.toString().slice(3, 4)}`;
+  } else if (average >= 10000 && average < 100000) {
+    averageDisplay.textContent = `average heck yeah: 00:0${average.toString().slice(0, 1)}:${average
+      .toString()
+      .slice(1, 2)}${average.toString().slice(2, 3)}:${average.toString().slice(3, 4)}${average
+      .toString()
+      .slice(4, 5)}`;
+  } else if (average >= 100000 && average < 1000000) {
+    averageDisplay.textContent = `average heck yeah: 00:${average.toString().slice(0, 1)}${average
+      .toString()
+      .slice(1, 2)}:${average.toString().slice(2, 3)}${average.toString().slice(3, 4)}:${average
+      .toString()
+      .slice(4, 5)}${average.toString().slice(5, 6)}`;
+  } else if (average >= 1000000 && average < 10000000) {
+    averageDisplay.textContent = `average heck yeah: 0${average.toString().slice(0, 1)}:${average
+      .toString()
+      .slice(1, 2)}${average.toString().slice(2, 3)}:${average.toString().slice(3, 4)}${average
+      .toString()
+      .slice(4, 5)}:${average.toString().slice(5, 6)}${average.toString().slice(6, 7)}`;
+  } else if (average >= 10000000 && average < 100000000) {
+    averageDisplay.textContent = `average heck yeah: ${average.toString().slice(0, 1)}${average
+      .toString()
+      .slice(1, 2)}:${average.toString().slice(2, 3)}${average.toString().slice(3, 4)}:${average
+      .toString()
+      .slice(4, 5)}${average.toString().slice(5, 6)}:${average.toString().slice(6, 7)}${average
+      .toString()
+      .slice(7, 8)}`;
+  } else {
+    averageDisplay.textContent = "average heck yeah: heck yeah B)";
+  }
 }
