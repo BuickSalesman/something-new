@@ -5,10 +5,15 @@ let prevHeckYeahTime,
   elapsedHeckYeahTime = 0;
 let time = 0;
 let interval = 0;
+let elapsedTimeSegments = [];
+let timeIndex = 0;
+let startTime = 0;
 
 const coolButton = document.getElementById("cool-button");
 const heckYeahs = document.getElementById("heck-yeahs");
 const heckYeahTimer = document.getElementById("heck-yeah-time");
+const averageDisplay = document.getElementById("avg-heck-yeah");
+const heckYeahMusic = document.getElementById("audio");
 
 coolButton.addEventListener("click", coolFunction);
 
@@ -19,13 +24,25 @@ function coolFunction() {
     coolButton.style.backgroundImage = "url('./assets/button-gif.webp')";
     heckYeahs.textContent = `heck yeahs: ${heckYeahCount}`;
     startHeckYeahTimer();
+    startMusic();
   } else {
     coolButton.style.backgroundImage = null;
     stopHeckYeahTimer();
+    updateAverageDisplay();
+    stopMusic();
   }
 }
 
+function startMusic() {
+  heckYeahMusic.play();
+}
+
+function stopMusic() {
+  heckYeahMusic.pause();
+}
+
 function startHeckYeahTimer() {
+  startTime = time;
   interval = setInterval(() => {
     time += 1;
     if (time >= 0 && time < 10) {
@@ -71,5 +88,13 @@ function startHeckYeahTimer() {
 }
 
 function stopHeckYeahTimer() {
+  timeIndex += 1;
   clearInterval(interval);
+  elapsedTimeSegments.push(time - startTime);
+  console.log(elapsedTimeSegments);
+}
+
+function updateAverageDisplay() {
+  let average = elapsedTimeSegments.reduce((a, b) => a + b) / elapsedTimeSegments.length;
+  averageDisplay.textContent = `average heck yeah: ${average.toFixed()}`;
 }
