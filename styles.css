@@ -6,3 +6,10 @@
   width: 100vw;
   text-align: center;
 }
+
+#cool-button {
+  font-size: 5rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+}
