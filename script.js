@@ -16,7 +16,22 @@ function coolFunction() {
     heckYeahCount += 1;
     coolButton.style.backgroundImage = "url('./assets/button-gif.webp')";
     heckYeahs.textContent = `heck yeahs: ${heckYeahCount}`;
+    startHeckYeahTimer();
   } else {
     coolButton.style.backgroundImage = null;
+    stopHeckYeahTimer();
   }
+}
+
+function startHeckYeahTimer() {
+  prevHeckYeahTime = Date.now();
+  timerInterval = setInterval(() => {
+    elapsedHeckYeahTime = Date.now() - prevHeckYeahTime;
+    heckYeahTimer.textContent = `time heck yeahing: ${elapsedHeckYeahTime}`;
+  }, 1);
+}
+
+function stopHeckYeahTimer() {
+  elapsedHeckYeahTime = heckYeahTimer.textContent;
+  clearInterval(timerInterval);
 }
