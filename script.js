@@ -3,6 +3,8 @@ let heckYeahCount = 0;
 let prevHeckYeahTime,
   timerInterval,
   elapsedHeckYeahTime = 0;
+let time = 0;
+let interval = 0;
 
 const coolButton = document.getElementById("cool-button");
 const heckYeahs = document.getElementById("heck-yeahs");
@@ -24,14 +26,12 @@ function coolFunction() {
 }
 
 function startHeckYeahTimer() {
-  prevHeckYeahTime = Date.now();
-  timerInterval = setInterval(() => {
-    elapsedHeckYeahTime = Date.now() - prevHeckYeahTime;
-    heckYeahTimer.textContent = `time heck yeahing: ${elapsedHeckYeahTime}`;
-  }, 1);
+  interval = setInterval(() => {
+    time += 1;
+    heckYeahTimer.textContent = `time heck yeahing: ${time}`;
+  }, 10);
 }
 
 function stopHeckYeahTimer() {
-  elapsedHeckYeahTime = heckYeahTimer.textContent;
-  clearInterval(timerInterval);
+  clearInterval(interval);
 }
