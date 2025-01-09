@@ -1,8 +1,12 @@
-var count = 1;
-var heckYeahCount = 0;
+let count = 1;
+let heckYeahCount = 0;
+let prevHeckYeahTime,
+  timerInterval,
+  elapsedHeckYeahTime = 0;
 
 const coolButton = document.getElementById("cool-button");
 const heckYeahs = document.getElementById("heck-yeahs");
+const heckYeahTimer = document.getElementById("heck-yeah-time");
 
 coolButton.addEventListener("click", coolFunction);
 
