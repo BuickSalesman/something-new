@@ -45,6 +45,17 @@ function startHeckYeahTimer() {
   startTime = time;
   interval = setInterval(() => {
     time += 1;
+
+    if (time % 100 === 60) {
+      time += 40;
+    }
+    if (Math.floor(time / 100) % 100 === 60) {
+      time += 4000;
+    }
+    if (Math.floor(time / 10000) % 100 === 60) {
+      time += 400000;
+    }
+
     if (time >= 0 && time < 10) {
       heckYeahTimer.textContent = `time heck yeahing: 00:00:00:0${time}`;
     } else if (time >= 10 && time < 100) {
@@ -97,6 +108,17 @@ function stopHeckYeahTimer() {
 function updateAverageDisplay() {
   let average = elapsedTimeSegments.reduce((a, b) => a + b) / elapsedTimeSegments.length;
   averageDisplay.textContent = `average heck yeah: ${average.toFixed()}`;
+
+  if (average % 100 === 60) {
+    average += 40;
+  }
+  if (Math.floor(average / 100) % 100 === 60) {
+    average += 4000;
+  }
+  if (Math.floor(average / 10000) % 100 === 60) {
+    average += 400000;
+  }
+
   if (average >= 0 && average < 10) {
     averageDisplay.textContent = `average heck yeah: 00:00:00:0${average}`;
   } else if (average >= 10 && average < 100) {
